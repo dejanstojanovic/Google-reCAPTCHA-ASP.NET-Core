@@ -1,0 +1,46 @@
+﻿@using Sample.Core.GoogleReCaptcha.Web.Models
+@model Comment
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <title>Sample comment page</title>
+</head>
+<body>
+    @using (Html.BeginForm(method: FormMethod.Post, controllerName: "Comments", actionName: "Index", htmlAttributes: new { id = "comment-form" }))
+    {
+        <div>
+            <label for="Title">Title</label>
+            <input type="text" name="Title" id="Title" />
+        </div>
+        <div>
+            <label for="Content">Content</label>
+            <textarea type="text" name="Content" id="Content" rows="8" cols="20"></textarea>
+        </div>
+        <div>
+            <div class="g-recaptcha" data-sitekey="6LdpxFkUAAAAAP4CpHT1GqwEFtwQhSfLKeFNCXK4"></div>
+        </div>
+        <div>
+            <button type="submit">Send comment</button>
+        </div>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <ul>
+                @foreach (var modelState in ViewData.ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                }
+            </ul>
+        }
+    }
+</body>
+</html>
