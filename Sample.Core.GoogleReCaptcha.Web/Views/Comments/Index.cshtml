@@ -1,5 +1,6 @@
 ﻿@using Sample.Core.GoogleReCaptcha.Web.Models
 @using Microsoft.Extensions.Configuration
+@using Sample.Core.GoogleReCaptcha.Web.Validation
 @inject IConfiguration Configuration
 @model Comment
 @{
@@ -23,7 +24,8 @@
             <textarea type="text" name="Content" id="Content" rows="8" cols="20"></textarea>
         </div>
         <div>
-            <div class="g-recaptcha" data-sitekey="@(Configuration.GetValue<String>("GoogleReCaptcha:ClientKey"))"></div>
+            @*<div class="g-recaptcha" data-sitekey="@(Configuration.GetValue<String>("GoogleReCaptcha:ClientKey"))"></div>*@
+            @Html.GoogleReCaptcha(Configuration.GetValue<String>("GoogleReCaptcha:ClientKey"))
         </div>
         <div>
             <button type="submit">Send comment</button>
