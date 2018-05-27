@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Sample.Core.GoogleReCaptcha.Web.Validation;
 using Newtonsoft.Json;
