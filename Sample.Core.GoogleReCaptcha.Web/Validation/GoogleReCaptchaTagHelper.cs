@@ -26,7 +26,7 @@ namespace Sample.Core.GoogleReCaptcha.Web.Validation
             var tagBuilder = new TagBuilder(tagName);
             tagBuilder.Attributes.Add("class", "g-recaptcha");
             tagBuilder.Attributes.Add("data-sitekey", siteKey);
-            if (callback != null && String.IsNullOrWhiteSpace(callback))
+            if (callback != null && !String.IsNullOrWhiteSpace(callback))
             {
                 tagBuilder.Attributes.Add("data-callback", callback);
             }

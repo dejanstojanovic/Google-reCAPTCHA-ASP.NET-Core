@@ -13,7 +13,7 @@
     <title>Sample comment page</title>
 </head>
 <body>
-    @using (Html.BeginForm(method: FormMethod.Post, controllerName: "Comments", actionName: "Index", htmlAttributes: new { id = "comment-form" }))
+    @using (Html.BeginForm(method: FormMethod.Post, controllerName: "Comments", actionName: "Invisible", htmlAttributes: new { id = "comment-form" }))
     {
         <div>
             <label for="Title">Title</label>
@@ -25,7 +25,7 @@
         </div>
         <div>
             @*@Html.GoogleReCaptcha(Configuration.GetValue<String>("GoogleReCaptcha:ClientKey"))*@
-            @Html.GoogleInvisibleReCaptcha("Submit form",Configuration.GetValue<String>("GoogleReCaptcha:ClientKey"))
+            @Html.GoogleInvisibleReCaptcha("Submit form",Configuration.GetValue<String>("GoogleReCaptcha:ClientKey"), "submitForm")
         </div>
         @*<div>
             <button type="submit">Send comment</button>
@@ -45,7 +45,9 @@
     }
 
     <script type="text/javascript">
-
+        function submitForm() {
+            document.forms[0].submit();
+        }
 
     </script>
 

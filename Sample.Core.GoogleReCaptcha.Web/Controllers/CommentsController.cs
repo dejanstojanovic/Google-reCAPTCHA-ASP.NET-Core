@@ -6,20 +6,38 @@ namespace Sample.Core.GoogleReCaptcha.Web.Controllers
     public class CommentsController : Controller
     {
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Invisible()
         {
-            return View();
+            return View("Invisible");
         }
 
         [HttpPost]
-        public IActionResult Index(Comment comment)
+        public IActionResult Invisible(Comment comment)
         {
             if (!ModelState.IsValid)
             {
-                //TODO: Comment saving logic here
-                return View();
+                return View("Invisible",comment);
             }
-            return View();
+            //TODO: Comment saving logic here
+            return View("Invisible");
         }
+
+
+        [HttpGet]
+        public IActionResult NotRobot()
+        {
+            return View("NotRobot");
+        }
+        [HttpPost]
+        public IActionResult NotRobot(Comment comment)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("NotRobot", comment);
+            }
+            //TODO: Comment saving logic here
+            return View("NotRobot");
+        }
+
     }
 }
