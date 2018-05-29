@@ -24,12 +24,8 @@
             <textarea type="text" name="Content" id="Content" rows="8" cols="20"></textarea>
         </div>
         <div>
-            @*@Html.GoogleReCaptcha(Configuration.GetValue<String>("GoogleReCaptcha:ClientKey"))*@
             @Html.GoogleInvisibleReCaptcha("Submit form",Configuration.GetValue<String>("GoogleReCaptcha:ClientKey"), "submitForm")
         </div>
-        @*<div>
-            <button type="submit">Send comment</button>
-        </div>*@
         @if (!ViewData.ModelState.IsValid)
         {
             <ul>
@@ -48,7 +44,6 @@
         function submitForm() {
             document.forms[0].submit();
         }
-
     </script>
 
 </body>
